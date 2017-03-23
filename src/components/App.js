@@ -1,15 +1,32 @@
-import React from 'react'
+import React from 'react';
+import MainPanel from './MainPanel';
+import Profile from  './Profile';
 
-const App = () => (
-  <div className="container">
-    <div className="jumbotron">
-      <h1 style={{ color: '#000' }}>Hello, world!</h1>
-      <p>...</p>
-      <p>
-        <a className="btn btn-primary btn-lg" href="/">Learn more</a>
-      </p>
-    </div>
-  </div>
-)
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: 'Bundit Nuntates',
+            username: 'silkyland',
+            numTweets: 43,
+            numFollower: 22,
+            numFollowing: 15,
+            isFollowing: true,
+        };
+    }
+
+    render() {
+        return (
+            <div className="container body">
+                <div className="left-panel">
+                    <Profile {...this.state} />
+                    <MainPanel name={this.state.name} username={this.state.username} enableTweet={true}/>
+                </div>
+            </div>
+        );
+    };
+}
+
 
 export default App
